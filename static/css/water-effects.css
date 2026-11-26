@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Water Effects, Liquid Gauges, Glowing Waves & Shimmer Animations
+   ========================================================================== */
+
+/* Shimmer scanline effect on cards */
+.shimmer-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(0, 240, 255, 0.06) 50%,
+        transparent 70%
+    );
+    transform: rotate(30deg);
+    animation: shimmer-swipe 6s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes shimmer-swipe {
+    0% { transform: translate(-100%, -100%) rotate(30deg); }
+    100% { transform: translate(100%, 100%) rotate(30deg); }
+}
+
+/* Water drop ripple effect on button click */
+.water-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.45) 0%, transparent 70%);
+    transform: scale(0);
+    animation: ripple-anim 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Liquid level progress bars */
+.liquid-bar-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(6, 14, 30, 0.8);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.liquid-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #0088ff, #00f0ff, #00ffc8);
+    background-size: 200% 100%;
+    animation: water-flow 3s ease infinite;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+@keyframes water-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Pulsating sensor status beacon */
+.sensor-beacon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+}
+
+.beacon-ring {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.beacon-core {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cyan-primary);
+    box-shadow: 0 0 10px var(--cyan-primary);
+}
+
+.beacon-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid var(--cyan-primary);
+    animation: beacon-expand 2s infinite ease-out;
+}
+
+@keyframes beacon-expand {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* Glowing text highlight */
+.glow-text-cyan {
+    color: var(--cyan-primary);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.glow-text-emerald {
+    color: var(--emerald-safe);
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+}
+
+.glow-text-amber {
+    color: var(--amber-warning);
+    text-shadow: 0 0 12px rgba(255, 183, 3, 0.6);
+}
+
+.glow-text-coral {
+    color: var(--coral-danger);
+    text-shadow: 0 0 12px rgba(255, 0, 85, 0.6);
+}

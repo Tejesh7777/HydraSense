@@ -1,0 +1,271 @@
+sample_id,source,pH,TDS,BOD,COD,Turbidity,EC,TSS,Oil_and_Grease,Temperature,Lab_Suitability_Category,Location,Collection_Date
+GW-0001,Bathtub Effluent,7.01,263.2,35.8,66.9,21.5,432.9,13.9,2.8,27.0,Low Contamination,Residential Tower 1,2026-03-22
+GW-0002,Bathroom Shower,7.0,216.4,27.4,52.5,12.3,341.0,33.7,2.8,23.9,Low Contamination,Staff Quarters,2026-03-16
+GW-0003,Bathtub Effluent,7.71,229.8,32.5,63.6,10.3,380.6,19.9,2.4,29.6,Low Contamination,Staff Quarters,2026-03-25
+GW-0004,Guest Bathroom,6.49,290.4,38.2,75.1,11.6,435.6,25.3,3.0,25.0,Low Contamination,Staff Quarters,2026-03-02
+GW-0005,Handwash Basin,8.17,293.7,33.7,72.6,19.5,483.8,20.9,3.5,23.8,Low Contamination,Hostel Wing A,2026-03-24
+GW-0006,Handwash Basin,7.23,258.9,24.4,41.5,11.8,430.6,14.9,3.6,24.4,Low Contamination,Residential Tower 1,2026-03-11
+GW-0007,Bathtub Effluent,7.56,281.9,25.3,53.6,14.8,433.8,24.6,3.7,27.9,Low Contamination,Staff Quarters,2026-03-05
+GW-0008,Bathtub Effluent,6.65,268.7,15.6,34.1,20.3,402.3,21.5,3.4,30.9,Low Contamination,Residential Tower 1,2026-03-09
+GW-0009,Bathtub Effluent,7.06,237.3,20.6,39.2,20.2,352.8,24.3,6.2,24.0,Low Contamination,Staff Quarters,2026-03-13
+GW-0010,Guest Bathroom,7.77,277.1,34.3,61.0,19.6,455.4,17.6,4.3,27.8,Low Contamination,Academic Block B,2026-03-11
+GW-0011,Guest Bathroom,6.95,225.3,28.9,60.4,10.1,336.8,28.0,4.3,27.8,Low Contamination,Hostel Wing A,2026-03-01
+GW-0012,Bathtub Effluent,6.88,203.2,28.1,54.4,13.7,321.4,27.9,3.4,28.4,Low Contamination,Residential Tower 1,2026-03-02
+GW-0013,Bathtub Effluent,6.82,195.3,32.8,62.4,14.3,323.3,31.3,3.3,27.7,Low Contamination,Academic Block B,2026-03-21
+GW-0014,Guest Bathroom,7.89,152.7,25.9,47.2,16.7,246.5,27.0,7.4,32.7,Low Contamination,Academic Block B,2026-03-11
+GW-0015,Bathtub Effluent,6.85,214.5,32.8,65.8,14.0,356.7,17.1,5.5,28.7,Low Contamination,Staff Quarters,2026-03-09
+GW-0016,Bathroom Shower,7.35,128.9,35.9,73.3,19.7,209.0,41.1,3.3,29.7,Low Contamination,Staff Quarters,2026-03-26
+GW-0017,Guest Bathroom,7.68,354.3,29.4,62.9,15.2,527.2,17.9,3.9,32.1,Low Contamination,Staff Quarters,2026-03-16
+GW-0018,Bathtub Effluent,7.1,287.9,38.8,70.7,23.2,426.4,27.0,4.5,22.7,Low Contamination,Hostel Wing A,2026-03-09
+GW-0019,Guest Bathroom,6.86,275.4,41.3,82.2,12.7,412.3,33.8,2.5,34.2,Low Contamination,Residential Tower 1,2026-03-22
+GW-0020,Bathtub Effluent,7.39,172.6,31.9,68.4,17.7,271.9,37.1,5.7,24.5,Low Contamination,Hostel Wing A,2026-03-05
+GW-0021,Guest Bathroom,6.86,284.0,32.3,55.1,15.5,420.6,27.1,7.3,30.7,Low Contamination,Residential Tower 1,2026-03-01
+GW-0022,Guest Bathroom,6.9,171.8,28.4,48.3,19.4,266.5,29.2,5.1,29.7,Low Contamination,Staff Quarters,2026-03-18
+GW-0023,Guest Bathroom,6.8,302.5,25.2,45.2,11.9,452.9,30.9,5.0,26.3,Low Contamination,Academic Block B,2026-03-23
+GW-0024,Handwash Basin,7.31,251.6,32.2,61.2,19.5,379.0,37.3,6.4,31.5,Low Contamination,Staff Quarters,2026-03-19
+GW-0025,Bathtub Effluent,7.22,221.6,47.1,84.6,13.3,361.9,25.1,2.2,30.3,Low Contamination,Residential Tower 1,2026-03-22
+GW-0026,Bathtub Effluent,7.22,191.5,26.3,51.9,18.7,315.6,28.3,5.0,26.5,Low Contamination,Residential Tower 1,2026-03-08
+GW-0027,Guest Bathroom,6.74,150.4,25.1,42.9,19.4,248.0,40.5,2.3,26.5,Low Contamination,Academic Block B,2026-03-01
+GW-0028,Bathtub Effluent,7.31,167.4,39.6,70.0,21.1,247.5,30.6,5.4,33.5,Low Contamination,Residential Tower 1,2026-03-03
+GW-0029,Guest Bathroom,6.79,250.3,29.3,48.5,12.7,412.0,32.9,3.9,30.3,Low Contamination,Academic Block B,2026-03-05
+GW-0030,Bathtub Effluent,7.09,263.6,57.5,115.6,16.3,406.0,30.4,6.4,31.3,Low Contamination,Staff Quarters,2026-03-18
+GW-0031,Bathtub Effluent,6.98,335.0,37.5,68.7,16.3,494.9,24.6,3.8,29.1,Low Contamination,Academic Block B,2026-03-10
+GW-0032,Handwash Basin,6.77,202.9,47.6,86.1,15.8,300.6,27.4,7.3,27.0,Low Contamination,Staff Quarters,2026-03-10
+GW-0033,Bathroom Shower,7.46,267.5,31.8,58.0,16.5,404.0,31.8,6.7,27.9,Low Contamination,Hostel Wing A,2026-03-23
+GW-0034,Bathroom Shower,6.9,275.6,37.1,70.4,7.0,436.6,23.9,2.3,27.6,Low Contamination,Hostel Wing A,2026-03-09
+GW-0035,Bathtub Effluent,7.11,212.4,47.3,88.4,20.3,340.7,36.4,6.1,24.9,Low Contamination,Residential Tower 1,2026-03-16
+GW-0036,Bathroom Shower,7.83,258.2,32.7,68.8,16.3,407.2,24.5,6.9,24.4,Low Contamination,Academic Block B,2026-03-05
+GW-0037,Bathroom Shower,6.69,176.7,26.3,54.3,15.1,274.1,34.0,2.6,28.0,Low Contamination,Residential Tower 1,2026-03-13
+GW-0038,Bathroom Shower,7.71,153.8,38.8,81.2,19.1,233.2,20.3,4.2,30.8,Low Contamination,Staff Quarters,2026-03-17
+GW-0039,Bathroom Shower,7.08,260.6,32.6,71.6,19.9,430.1,31.3,4.9,28.7,Low Contamination,Hostel Wing A,2026-03-17
+GW-0040,Handwash Basin,6.89,308.7,34.9,75.9,16.8,510.6,21.9,3.8,27.8,Low Contamination,Academic Block B,2026-03-04
+GW-0041,Handwash Basin,6.73,214.9,25.6,45.0,10.6,337.8,40.1,3.5,24.0,Low Contamination,Hostel Wing A,2026-03-14
+GW-0042,Bathtub Effluent,7.46,306.4,37.6,79.7,15.5,507.6,27.5,6.5,27.7,Low Contamination,Staff Quarters,2026-03-15
+GW-0043,Bathroom Shower,7.68,209.5,41.2,80.0,14.5,346.2,30.4,6.1,34.2,Low Contamination,Residential Tower 1,2026-03-21
+GW-0044,Bathtub Effluent,7.04,268.0,23.5,51.1,15.4,413.3,33.0,5.4,25.1,Low Contamination,Staff Quarters,2026-03-08
+GW-0045,Bathtub Effluent,7.28,332.1,32.9,69.5,22.2,515.6,35.2,4.2,29.0,Low Contamination,Staff Quarters,2026-03-15
+GW-0046,Bathtub Effluent,7.43,301.6,24.3,40.9,18.7,501.7,35.4,4.2,23.2,Low Contamination,Residential Tower 1,2026-03-19
+GW-0047,Bathtub Effluent,7.33,317.3,38.9,69.2,15.6,494.3,34.8,4.5,30.4,Low Contamination,Hostel Wing A,2026-03-10
+GW-0048,Bathroom Shower,7.1,165.1,32.0,57.5,17.6,253.7,27.1,2.7,28.3,Low Contamination,Residential Tower 1,2026-03-16
+GW-0049,Bathtub Effluent,7.76,203.4,36.5,67.4,12.4,303.6,31.3,5.3,28.5,Low Contamination,Residential Tower 1,2026-03-19
+GW-0050,Bathroom Shower,7.01,204.3,31.1,53.6,11.9,324.7,41.8,2.2,28.6,Low Contamination,Hostel Wing A,2026-03-15
+GW-0051,Bathroom Shower,7.24,328.8,29.0,46.4,11.8,491.1,29.3,7.4,26.2,Low Contamination,Residential Tower 1,2026-03-24
+GW-0052,Handwash Basin,7.47,204.9,46.2,75.6,17.0,334.9,30.8,6.6,26.1,Low Contamination,Residential Tower 1,2026-03-15
+GW-0053,Guest Bathroom,7.16,197.0,19.1,33.6,16.8,312.6,23.5,2.7,25.3,Low Contamination,Hostel Wing A,2026-03-13
+GW-0054,Guest Bathroom,6.44,222.4,29.6,57.7,24.7,337.5,42.6,5.1,32.7,Low Contamination,Academic Block B,2026-03-09
+GW-0055,Bathroom Shower,7.69,181.1,16.7,36.6,19.8,279.3,25.5,2.8,27.8,Low Contamination,Residential Tower 1,2026-03-16
+GW-0056,Guest Bathroom,7.48,246.5,46.4,97.1,15.7,374.9,15.8,6.6,36.4,Low Contamination,Hostel Wing A,2026-03-06
+GW-0057,Handwash Basin,6.93,158.8,19.0,31.7,16.2,244.7,32.5,2.8,23.5,Low Contamination,Staff Quarters,2026-03-13
+GW-0058,Bathtub Effluent,6.59,295.9,48.5,93.6,8.2,480.2,23.9,2.8,29.3,Low Contamination,Hostel Wing A,2026-03-17
+GW-0059,Bathroom Shower,6.95,349.5,17.8,38.4,11.9,524.4,29.2,3.0,28.8,Low Contamination,Residential Tower 1,2026-03-01
+GW-0060,Guest Bathroom,7.4,262.4,38.1,79.8,18.6,426.7,32.6,7.0,24.6,Low Contamination,Hostel Wing A,2026-03-13
+GW-0061,Handwash Basin,7.62,221.6,15.7,29.5,12.0,355.1,28.1,3.3,33.5,Low Contamination,Hostel Wing A,2026-03-15
+GW-0062,Bathtub Effluent,6.94,242.5,33.9,63.0,9.9,387.0,34.4,2.9,31.8,Low Contamination,Residential Tower 1,2026-03-01
+GW-0063,Guest Bathroom,7.37,311.2,39.8,67.1,18.9,504.9,27.6,6.2,34.0,Low Contamination,Academic Block B,2026-03-06
+GW-0064,Bathroom Shower,7.11,196.0,28.4,49.3,17.5,298.0,34.1,5.8,32.6,Low Contamination,Staff Quarters,2026-03-26
+GW-0065,Bathtub Effluent,7.61,256.1,31.1,54.0,17.3,404.0,33.7,7.0,24.0,Low Contamination,Staff Quarters,2026-03-18
+GW-0066,Bathroom Shower,7.5,197.9,25.0,53.8,16.8,298.4,23.8,2.4,32.4,Low Contamination,Residential Tower 1,2026-03-14
+GW-0067,Guest Bathroom,7.08,218.8,28.8,60.6,14.3,349.2,20.6,5.3,26.3,Low Contamination,Residential Tower 1,2026-03-09
+GW-0068,Bathroom Shower,7.57,213.8,38.8,83.5,6.7,340.6,36.9,4.5,26.0,Low Contamination,Residential Tower 1,2026-03-27
+GW-0069,Guest Bathroom,7.13,254.1,22.4,36.3,17.1,406.6,23.0,3.2,31.2,Low Contamination,Academic Block B,2026-03-21
+GW-0070,Bathroom Shower,7.11,190.2,52.6,86.3,16.2,288.2,29.4,3.1,28.1,Low Contamination,Hostel Wing A,2026-03-17
+GW-0071,Bathroom Shower,7.58,222.2,18.8,38.1,18.8,346.0,17.3,4.7,36.9,Low Contamination,Residential Tower 1,2026-03-04
+GW-0072,Bathroom Shower,7.0,230.0,25.4,54.3,19.7,358.2,36.6,3.4,22.0,Low Contamination,Residential Tower 1,2026-03-27
+GW-0073,Bathtub Effluent,7.02,262.0,22.2,36.8,18.9,423.0,33.0,6.6,29.8,Low Contamination,Staff Quarters,2026-03-20
+GW-0074,Bathroom Shower,7.1,192.4,27.2,53.9,15.0,292.0,30.3,5.9,31.1,Low Contamination,Hostel Wing A,2026-03-15
+GW-0075,Bathroom Shower,6.77,203.3,42.5,74.8,9.0,312.8,36.7,4.4,22.0,Low Contamination,Staff Quarters,2026-03-03
+GW-0076,Hostel Laundry Facility,7.97,446.8,94.6,182.3,52.0,678.2,112.6,19.8,31.3,Medium Contamination,Residential Laundry,2026-03-07
+GW-0077,Washing Machine Rinse,7.98,506.2,95.4,183.2,52.2,788.7,85.5,13.8,27.6,Medium Contamination,Residential Laundry,2026-03-05
+GW-0078,Washing Machine Rinse,8.71,518.4,77.0,178.1,37.1,809.9,80.2,18.0,39.0,Medium Contamination,Residential Laundry,2026-03-26
+GW-0079,Washing Machine Rinse,8.07,342.3,88.0,195.6,50.4,535.2,54.6,15.0,28.2,Medium Contamination,Residential Laundry,2026-03-27
+GW-0080,Mixed Domestic Greywater,8.14,530.0,105.4,199.7,46.6,804.6,87.4,12.3,25.0,Medium Contamination,Hostel Wing B,2026-03-11
+GW-0081,Washing Machine Rinse,9.0,512.8,118.0,221.2,39.6,819.2,81.4,19.6,37.2,Medium Contamination,Campus Central Laundry,2026-03-25
+GW-0082,Mixed Domestic Greywater,8.34,475.4,99.4,185.0,71.4,682.4,94.4,20.6,35.5,Medium Contamination,Residential Laundry,2026-03-22
+GW-0083,Hostel Laundry Facility,7.7,567.5,64.5,160.7,47.3,815.9,96.7,10.5,31.5,Medium Contamination,Residential Laundry,2026-03-07
+GW-0084,Washing Machine Rinse,7.81,508.4,122.1,283.5,43.7,814.2,106.4,19.0,22.0,Medium Contamination,Campus Central Laundry,2026-03-24
+GW-0085,Mixed Domestic Greywater,7.51,725.6,96.6,203.7,60.2,1112.3,106.0,17.5,32.1,Medium Contamination,Campus Central Laundry,2026-03-25
+GW-0086,Washing Machine Rinse,8.29,541.2,68.0,123.6,55.0,784.8,94.8,21.2,31.2,Medium Contamination,Apartment Complex C,2026-03-14
+GW-0087,Hostel Laundry Facility,7.89,478.4,62.9,130.8,54.8,762.6,87.2,20.3,23.7,Medium Contamination,Residential Laundry,2026-03-03
+GW-0088,Washing Machine Rinse,7.29,451.1,74.9,137.0,38.8,725.9,81.4,15.4,31.8,Medium Contamination,Hostel Wing B,2026-03-04
+GW-0089,Hostel Laundry Facility,8.15,405.1,111.6,278.2,50.5,596.2,79.3,21.7,28.7,Medium Contamination,Campus Central Laundry,2026-03-21
+GW-0090,Mixed Domestic Greywater,7.19,525.5,84.6,163.3,40.8,770.1,73.1,23.6,30.4,Medium Contamination,Residential Laundry,2026-03-09
+GW-0091,Mixed Domestic Greywater,8.18,704.0,97.2,208.4,27.5,1006.1,80.4,18.7,34.3,Medium Contamination,Residential Laundry,2026-03-15
+GW-0092,Washing Machine Rinse,8.6,654.7,82.7,200.3,43.3,940.1,87.1,19.2,32.2,Medium Contamination,Residential Laundry,2026-03-11
+GW-0093,Mixed Domestic Greywater,7.47,456.0,95.9,237.2,40.4,725.2,98.3,18.0,31.1,Medium Contamination,Hostel Wing B,2026-03-02
+GW-0094,Hostel Laundry Facility,7.16,554.7,99.8,225.6,51.7,806.2,89.3,21.7,33.5,Medium Contamination,Residential Laundry,2026-03-21
+GW-0095,Laundry Unit 2,8.04,472.8,98.9,244.6,46.1,719.4,72.2,22.7,33.2,Medium Contamination,Campus Central Laundry,2026-03-04
+GW-0096,Laundry Unit 2,7.91,615.9,98.8,221.5,48.6,961.2,93.6,20.9,38.6,Medium Contamination,Campus Central Laundry,2026-03-19
+GW-0097,Laundry Unit 2,7.88,495.3,88.0,169.5,61.3,728.1,72.0,20.8,32.7,Medium Contamination,Hostel Wing B,2026-03-27
+GW-0098,Hostel Laundry Facility,7.74,533.1,58.8,131.4,59.6,854.8,88.6,10.3,29.2,Medium Contamination,Apartment Complex C,2026-03-01
+GW-0099,Laundry Unit 2,8.41,485.7,92.7,228.1,33.3,773.2,83.6,21.6,35.1,Medium Contamination,Apartment Complex C,2026-03-20
+GW-0100,Hostel Laundry Facility,8.01,477.7,69.4,171.1,58.5,755.8,93.7,15.9,30.7,Medium Contamination,Apartment Complex C,2026-03-20
+GW-0101,Laundry Unit 2,7.75,636.2,72.7,167.7,33.9,936.0,88.4,20.0,30.0,Medium Contamination,Campus Central Laundry,2026-03-15
+GW-0102,Hostel Laundry Facility,8.13,517.8,100.4,235.3,45.2,759.6,90.3,18.8,33.1,Medium Contamination,Hostel Wing B,2026-03-12
+GW-0103,Washing Machine Rinse,7.83,419.4,66.5,145.7,55.3,657.3,90.0,14.6,27.5,Medium Contamination,Campus Central Laundry,2026-03-24
+GW-0104,Hostel Laundry Facility,7.7,378.3,86.0,190.9,25.0,588.0,96.1,20.9,32.5,Medium Contamination,Hostel Wing B,2026-03-11
+GW-0105,Laundry Unit 2,7.62,552.8,98.3,178.2,37.1,839.4,71.0,20.9,27.0,Medium Contamination,Campus Central Laundry,2026-03-01
+GW-0106,Laundry Unit 2,8.36,526.9,67.3,167.2,34.7,828.4,98.5,10.6,32.9,Medium Contamination,Hostel Wing B,2026-03-17
+GW-0107,Hostel Laundry Facility,8.53,589.3,96.2,220.9,40.2,854.5,98.1,14.8,33.2,Medium Contamination,Apartment Complex C,2026-03-07
+GW-0108,Mixed Domestic Greywater,7.95,591.3,91.0,204.8,63.8,893.1,75.3,10.8,31.7,Medium Contamination,Apartment Complex C,2026-03-12
+GW-0109,Washing Machine Rinse,8.97,488.2,87.9,204.0,25.0,707.8,71.9,12.3,30.7,Medium Contamination,Campus Central Laundry,2026-03-18
+GW-0110,Mixed Domestic Greywater,7.92,529.0,107.3,198.6,35.7,849.9,77.4,22.2,25.2,Medium Contamination,Apartment Complex C,2026-03-26
+GW-0111,Washing Machine Rinse,8.07,597.4,112.5,242.3,57.2,900.4,128.7,10.4,32.4,Medium Contamination,Campus Central Laundry,2026-03-04
+GW-0112,Laundry Unit 2,8.49,552.9,77.2,159.7,31.6,841.2,73.2,20.9,33.2,Medium Contamination,Hostel Wing B,2026-03-16
+GW-0113,Laundry Unit 2,7.65,469.6,94.5,186.5,62.1,680.9,95.9,15.0,22.0,Medium Contamination,Campus Central Laundry,2026-03-07
+GW-0114,Laundry Unit 2,7.3,600.5,115.9,209.4,44.5,900.2,52.9,13.3,36.4,Medium Contamination,Apartment Complex C,2026-03-11
+GW-0115,Laundry Unit 2,6.96,539.1,89.8,177.3,62.8,805.4,66.9,12.3,32.8,Medium Contamination,Residential Laundry,2026-03-11
+GW-0116,Washing Machine Rinse,8.13,358.5,109.1,230.5,59.6,520.2,110.5,10.5,39.1,Medium Contamination,Campus Central Laundry,2026-03-02
+GW-0117,Washing Machine Rinse,8.23,523.9,109.7,221.7,47.0,793.1,98.5,16.4,32.2,Medium Contamination,Apartment Complex C,2026-03-11
+GW-0118,Laundry Unit 2,8.09,363.4,80.3,155.1,54.1,535.6,73.7,23.5,28.9,Medium Contamination,Apartment Complex C,2026-03-02
+GW-0119,Washing Machine Rinse,7.89,670.3,114.3,251.4,51.7,1076.9,85.6,19.5,32.6,Medium Contamination,Apartment Complex C,2026-03-16
+GW-0120,Laundry Unit 2,8.64,434.0,101.1,252.7,38.9,695.7,80.8,22.2,32.2,Medium Contamination,Residential Laundry,2026-03-21
+GW-0121,Washing Machine Rinse,7.63,495.5,119.5,292.5,56.3,756.4,96.2,15.3,29.6,Medium Contamination,Campus Central Laundry,2026-03-22
+GW-0122,Mixed Domestic Greywater,7.32,396.7,77.3,163.4,66.6,620.8,58.7,11.0,28.9,Medium Contamination,Apartment Complex C,2026-03-08
+GW-0123,Laundry Unit 2,8.47,572.3,157.8,389.1,48.4,832.1,52.6,16.7,31.6,Medium Contamination,Apartment Complex C,2026-03-16
+GW-0124,Mixed Domestic Greywater,8.17,584.0,110.2,217.1,51.4,841.3,68.4,16.8,30.0,Medium Contamination,Hostel Wing B,2026-03-21
+GW-0125,Hostel Laundry Facility,8.14,535.5,144.1,268.4,59.7,790.5,87.7,21.5,30.8,Medium Contamination,Campus Central Laundry,2026-03-11
+GW-0126,Mixed Domestic Greywater,7.46,561.3,131.9,247.3,50.7,843.6,107.2,17.7,30.7,Medium Contamination,Hostel Wing B,2026-03-13
+GW-0127,Laundry Unit 2,8.01,688.8,121.5,273.7,53.1,1086.5,95.3,20.8,30.1,Medium Contamination,Residential Laundry,2026-03-26
+GW-0128,Mixed Domestic Greywater,7.58,587.1,89.1,202.0,63.0,935.4,67.0,18.2,38.5,Medium Contamination,Apartment Complex C,2026-03-17
+GW-0129,Mixed Domestic Greywater,7.86,602.0,68.8,138.9,49.7,943.0,92.1,13.6,26.8,Medium Contamination,Residential Laundry,2026-03-25
+GW-0130,Laundry Unit 2,7.7,468.2,128.4,270.9,59.1,714.1,100.8,18.4,29.2,Medium Contamination,Campus Central Laundry,2026-03-10
+GW-0131,Hostel Laundry Facility,7.73,504.7,83.4,163.4,35.8,778.4,82.6,10.9,28.3,Medium Contamination,Residential Laundry,2026-03-12
+GW-0132,Mixed Domestic Greywater,7.29,581.8,128.8,252.7,58.4,886.1,55.0,23.9,26.3,Medium Contamination,Apartment Complex C,2026-03-20
+GW-0133,Hostel Laundry Facility,7.53,532.1,97.2,226.3,52.5,839.8,54.0,21.5,24.6,Medium Contamination,Hostel Wing B,2026-03-17
+GW-0134,Hostel Laundry Facility,8.39,565.7,73.2,182.6,44.2,814.9,103.8,17.3,31.5,Medium Contamination,Campus Central Laundry,2026-03-22
+GW-0135,Laundry Unit 2,8.09,545.2,98.1,187.5,77.6,872.3,76.8,14.8,29.6,Medium Contamination,Residential Laundry,2026-03-21
+GW-0136,Laundry Unit 2,7.94,573.1,78.0,164.8,28.8,857.9,97.1,17.0,31.1,Medium Contamination,Campus Central Laundry,2026-03-05
+GW-0137,Hostel Laundry Facility,7.94,512.6,113.4,273.0,44.5,748.9,70.0,11.1,34.5,Medium Contamination,Residential Laundry,2026-03-03
+GW-0138,Laundry Unit 2,7.7,479.2,96.7,237.2,54.6,719.5,46.6,18.5,30.2,Medium Contamination,Residential Laundry,2026-03-14
+GW-0139,Hostel Laundry Facility,7.61,559.7,55.0,110.0,48.8,861.9,91.1,16.1,31.2,Medium Contamination,Residential Laundry,2026-03-14
+GW-0140,Hostel Laundry Facility,7.48,509.2,70.8,158.1,55.2,757.7,78.2,10.8,36.2,Medium Contamination,Apartment Complex C,2026-03-18
+GW-0141,Washing Machine Rinse,7.23,586.2,70.4,130.4,44.9,858.8,68.1,19.7,29.0,Medium Contamination,Residential Laundry,2026-03-04
+GW-0142,Hostel Laundry Facility,7.21,588.4,105.0,220.3,75.5,933.3,79.7,12.7,34.5,Medium Contamination,Apartment Complex C,2026-03-27
+GW-0143,Hostel Laundry Facility,7.31,514.4,103.4,204.1,46.8,815.6,106.6,18.2,29.7,Medium Contamination,Apartment Complex C,2026-03-26
+GW-0144,Hostel Laundry Facility,7.23,533.8,94.7,177.7,55.0,804.1,103.5,11.4,30.4,Medium Contamination,Campus Central Laundry,2026-03-04
+GW-0145,Laundry Unit 2,8.43,455.3,55.0,110.0,42.7,693.3,87.1,23.4,31.7,Medium Contamination,Residential Laundry,2026-03-24
+GW-0146,Washing Machine Rinse,7.81,491.5,93.2,218.7,49.8,716.5,45.0,16.3,30.7,Medium Contamination,Residential Laundry,2026-03-15
+GW-0147,Washing Machine Rinse,7.91,463.5,104.2,224.9,39.9,687.3,75.4,11.0,31.6,Medium Contamination,Hostel Wing B,2026-03-17
+GW-0148,Washing Machine Rinse,6.8,533.9,99.7,247.2,47.8,767.8,71.0,15.8,35.2,Medium Contamination,Residential Laundry,2026-03-22
+GW-0149,Hostel Laundry Facility,7.84,466.2,95.6,232.2,37.8,683.0,66.5,11.0,27.9,Medium Contamination,Residential Laundry,2026-03-26
+GW-0150,Mixed Domestic Greywater,7.61,589.6,96.1,212.2,51.2,867.3,91.7,11.8,34.8,Medium Contamination,Apartment Complex C,2026-03-17
+GW-0151,Hostel Laundry Facility,7.53,535.1,112.2,232.5,25.0,845.2,87.7,19.5,30.4,Medium Contamination,Apartment Complex C,2026-03-14
+GW-0152,Washing Machine Rinse,7.3,588.5,101.1,241.9,51.2,848.6,97.1,16.4,28.2,Medium Contamination,Hostel Wing B,2026-03-14
+GW-0153,Hostel Laundry Facility,7.32,537.6,92.1,214.3,43.6,838.0,113.1,11.5,32.1,Medium Contamination,Residential Laundry,2026-03-15
+GW-0154,Hostel Laundry Facility,7.66,564.0,119.8,277.1,48.3,850.2,86.3,14.2,40.1,Medium Contamination,Apartment Complex C,2026-03-23
+GW-0155,Washing Machine Rinse,7.97,455.8,91.4,174.8,60.2,685.8,92.7,22.3,33.7,Medium Contamination,Hostel Wing B,2026-03-08
+GW-0156,Canteen Wash Basin,7.31,833.5,219.1,572.5,90.0,1216.0,157.0,52.4,31.1,High Contamination,Student Mess Kitchen,2026-03-04
+GW-0157,Dishwasher Discharge,6.73,906.0,238.9,615.1,144.9,1297.9,171.3,45.1,40.4,High Contamination,Faculty Club Kitchen,2026-03-04
+GW-0158,Canteen Wash Basin,7.55,836.0,217.9,517.3,148.3,1253.1,121.6,52.6,40.6,High Contamination,Student Mess Kitchen,2026-03-17
+GW-0159,Canteen Wash Basin,6.62,998.3,191.2,431.7,132.6,1440.0,174.3,47.6,32.8,High Contamination,Food Court Block 4,2026-03-19
+GW-0160,Kitchen Sink Pre-wash,6.05,922.4,247.4,689.6,146.2,1421.5,177.9,41.7,40.7,High Contamination,Faculty Club Kitchen,2026-03-23
+GW-0161,Kitchen Sink Pre-wash,6.14,865.1,226.8,593.1,90.9,1201.8,181.6,43.0,37.8,High Contamination,Student Mess Kitchen,2026-03-20
+GW-0162,Cafeteria Dish Area,6.9,776.2,220.6,614.5,90.6,1203.6,200.1,47.2,42.2,High Contamination,Faculty Club Kitchen,2026-03-17
+GW-0163,Canteen Wash Basin,6.78,863.8,193.7,525.1,85.1,1223.9,193.0,43.9,33.4,High Contamination,Main Dining Hall,2026-03-04
+GW-0164,Dishwasher Discharge,6.33,895.6,200.4,550.3,100.0,1331.8,141.6,52.5,31.7,High Contamination,Faculty Club Kitchen,2026-03-16
+GW-0165,Cafeteria Dish Area,6.43,1052.5,191.6,410.8,124.6,1479.1,178.6,42.7,31.0,High Contamination,Food Court Block 4,2026-03-06
+GW-0166,Canteen Wash Basin,7.03,782.0,172.8,469.6,128.5,1175.2,192.1,48.2,37.7,High Contamination,Main Dining Hall,2026-03-26
+GW-0167,Kitchen Sink Pre-wash,7.04,742.0,220.3,534.2,91.1,1034.2,118.5,35.0,40.2,High Contamination,Faculty Club Kitchen,2026-03-21
+GW-0168,Cafeteria Dish Area,6.15,861.9,226.4,630.8,172.9,1325.0,210.4,52.6,26.4,High Contamination,Main Dining Hall,2026-03-17
+GW-0169,Dishwasher Discharge,6.55,788.8,165.7,457.7,123.6,1116.5,159.3,42.7,43.5,High Contamination,Main Dining Hall,2026-03-07
+GW-0170,Dishwasher Discharge,7.12,804.2,199.4,555.3,104.6,1146.5,110.0,54.7,35.4,High Contamination,Faculty Club Kitchen,2026-03-04
+GW-0171,Dishwasher Discharge,6.8,787.9,192.6,532.1,107.8,1158.0,187.9,46.4,41.9,High Contamination,Student Mess Kitchen,2026-03-03
+GW-0172,Cafeteria Dish Area,6.18,713.2,191.9,463.7,155.2,1071.2,170.6,37.1,32.0,High Contamination,Student Mess Kitchen,2026-03-10
+GW-0173,Cafeteria Dish Area,7.11,806.5,275.6,732.7,152.0,1211.6,177.4,36.1,38.9,High Contamination,Student Mess Kitchen,2026-03-06
+GW-0174,Cafeteria Dish Area,6.81,757.0,237.6,527.0,118.2,1120.4,160.1,41.5,35.9,High Contamination,Student Mess Kitchen,2026-03-16
+GW-0175,Canteen Wash Basin,7.15,810.9,221.9,515.6,111.4,1127.9,138.0,50.9,35.3,High Contamination,Faculty Club Kitchen,2026-03-04
+GW-0176,Cafeteria Dish Area,6.5,988.4,251.6,655.1,189.7,1391.9,181.8,36.9,34.1,High Contamination,Main Dining Hall,2026-03-09
+GW-0177,Cafeteria Dish Area,6.75,960.5,171.2,457.7,104.0,1354.4,118.2,34.9,36.1,High Contamination,Faculty Club Kitchen,2026-03-01
+GW-0178,Kitchen Sink Pre-wash,7.07,861.4,182.6,461.9,140.2,1287.2,230.4,53.0,37.6,High Contamination,Faculty Club Kitchen,2026-03-15
+GW-0179,Canteen Wash Basin,6.1,915.7,168.7,435.3,154.7,1439.2,184.9,37.9,34.5,High Contamination,Student Mess Kitchen,2026-03-23
+GW-0180,Canteen Wash Basin,6.48,814.6,198.2,466.2,135.8,1280.5,157.4,51.7,41.3,High Contamination,Student Mess Kitchen,2026-03-12
+GW-0181,Kitchen Sink Pre-wash,7.0,953.4,167.6,458.4,145.9,1381.0,141.2,43.6,36.1,High Contamination,Faculty Club Kitchen,2026-03-14
+GW-0182,Cafeteria Dish Area,6.08,846.6,255.8,623.0,115.6,1340.4,160.8,57.1,35.2,High Contamination,Faculty Club Kitchen,2026-03-16
+GW-0183,Kitchen Sink Pre-wash,6.88,851.4,235.9,498.4,140.4,1188.0,142.3,53.6,39.8,High Contamination,Student Mess Kitchen,2026-03-19
+GW-0184,Canteen Wash Basin,5.79,851.2,150.5,402.9,138.2,1336.9,201.1,47.6,32.0,High Contamination,Food Court Block 4,2026-03-04
+GW-0185,Cafeteria Dish Area,6.84,978.9,241.6,538.7,130.4,1536.5,200.7,32.9,32.9,High Contamination,Food Court Block 4,2026-03-11
+GW-0186,Cafeteria Dish Area,6.79,1033.2,167.1,376.7,144.7,1533.0,181.4,32.8,42.3,High Contamination,Food Court Block 4,2026-03-17
+GW-0187,Dishwasher Discharge,6.7,990.1,145.0,310.0,141.9,1479.7,192.9,55.2,41.0,High Contamination,Main Dining Hall,2026-03-22
+GW-0188,Cafeteria Dish Area,6.56,949.8,230.3,592.7,155.0,1479.8,200.5,57.2,32.8,High Contamination,Student Mess Kitchen,2026-03-02
+GW-0189,Cafeteria Dish Area,7.41,947.2,290.2,623.8,127.7,1450.8,159.6,33.2,26.7,High Contamination,Student Mess Kitchen,2026-03-19
+GW-0190,Cafeteria Dish Area,5.6,711.3,290.4,705.3,112.3,1061.2,262.0,46.0,32.7,High Contamination,Main Dining Hall,2026-03-14
+GW-0191,Kitchen Sink Pre-wash,6.43,797.3,221.2,543.9,158.5,1214.6,169.4,34.3,38.2,High Contamination,Main Dining Hall,2026-03-17
+GW-0192,Cafeteria Dish Area,7.17,889.5,194.7,500.9,126.7,1402.9,201.5,36.3,35.2,High Contamination,Student Mess Kitchen,2026-03-12
+GW-0193,Canteen Wash Basin,7.06,860.0,237.0,549.0,163.3,1221.3,180.1,49.9,33.0,High Contamination,Faculty Club Kitchen,2026-03-04
+GW-0194,Dishwasher Discharge,6.92,999.4,216.8,538.7,104.5,1405.6,116.4,51.5,31.9,High Contamination,Faculty Club Kitchen,2026-03-09
+GW-0195,Dishwasher Discharge,7.25,689.3,217.2,589.0,144.0,991.6,177.0,35.7,32.5,High Contamination,Main Dining Hall,2026-03-09
+GW-0196,Dishwasher Discharge,5.6,1051.4,203.5,557.0,105.8,1496.2,168.9,53.2,29.6,High Contamination,Faculty Club Kitchen,2026-03-21
+GW-0197,Dishwasher Discharge,6.44,999.2,212.8,575.2,104.9,1462.7,155.3,43.7,30.2,High Contamination,Student Mess Kitchen,2026-03-15
+GW-0198,Kitchen Sink Pre-wash,5.6,803.7,145.8,367.5,154.3,1158.9,140.5,36.3,41.4,High Contamination,Main Dining Hall,2026-03-07
+GW-0199,Cafeteria Dish Area,6.52,927.4,145.0,310.0,133.4,1395.2,190.3,34.6,40.8,High Contamination,Student Mess Kitchen,2026-03-05
+GW-0200,Cafeteria Dish Area,5.92,814.8,209.1,539.9,132.0,1267.9,158.4,45.1,35.4,High Contamination,Food Court Block 4,2026-03-13
+GW-0201,Cafeteria Dish Area,6.54,862.7,204.8,486.8,143.4,1310.7,173.6,35.4,30.8,High Contamination,Faculty Club Kitchen,2026-03-05
+GW-0202,Dishwasher Discharge,6.34,650.0,214.4,532.1,124.6,985.2,137.4,32.8,36.8,High Contamination,Student Mess Kitchen,2026-03-16
+GW-0203,Dishwasher Discharge,5.94,895.7,270.6,712.6,180.8,1270.4,112.0,38.7,33.3,High Contamination,Food Court Block 4,2026-03-26
+GW-0204,Kitchen Sink Pre-wash,7.72,889.4,232.2,576.2,112.3,1379.2,186.4,37.4,34.1,High Contamination,Main Dining Hall,2026-03-17
+GW-0205,Canteen Wash Basin,6.76,978.9,278.6,624.3,153.2,1470.8,173.9,46.1,33.2,High Contamination,Food Court Block 4,2026-03-27
+GW-0206,Kitchen Sink Pre-wash,5.67,1005.6,190.9,500.6,123.8,1480.0,180.6,44.1,33.9,High Contamination,Faculty Club Kitchen,2026-03-12
+GW-0207,Dishwasher Discharge,6.53,751.0,209.5,566.6,134.8,1099.6,124.3,37.3,32.1,High Contamination,Student Mess Kitchen,2026-03-23
+GW-0208,Canteen Wash Basin,7.01,900.6,257.7,702.5,104.2,1342.1,248.9,47.4,30.8,High Contamination,Food Court Block 4,2026-03-13
+GW-0209,Canteen Wash Basin,6.49,863.4,203.2,547.2,153.3,1215.4,195.8,48.3,24.0,High Contamination,Food Court Block 4,2026-03-23
+GW-0210,Cafeteria Dish Area,7.83,930.6,248.0,578.7,137.2,1337.1,225.6,57.8,36.1,High Contamination,Faculty Club Kitchen,2026-03-08
+GW-0211,Dishwasher Discharge,6.31,974.2,228.0,501.6,142.9,1396.1,199.4,51.9,40.2,High Contamination,Student Mess Kitchen,2026-03-03
+GW-0212,Dishwasher Discharge,6.48,784.0,176.4,455.3,149.4,1240.1,191.5,48.4,28.1,High Contamination,Main Dining Hall,2026-03-13
+GW-0213,Cafeteria Dish Area,5.6,903.5,210.0,557.8,104.6,1302.6,118.7,38.0,32.4,High Contamination,Food Court Block 4,2026-03-03
+GW-0214,Cafeteria Dish Area,6.17,828.2,250.3,621.8,132.0,1274.7,226.8,36.9,33.6,High Contamination,Food Court Block 4,2026-03-23
+GW-0215,Cafeteria Dish Area,7.8,738.1,187.3,482.8,129.7,1132.4,204.5,52.9,37.7,High Contamination,Faculty Club Kitchen,2026-03-04
+GW-0216,Kitchen Sink Pre-wash,6.72,927.0,170.7,463.9,116.9,1316.5,141.2,42.5,39.2,High Contamination,Main Dining Hall,2026-03-17
+GW-0217,Dishwasher Discharge,6.99,982.3,241.0,604.5,130.2,1461.7,191.8,34.2,34.8,High Contamination,Student Mess Kitchen,2026-03-11
+GW-0218,Kitchen Sink Pre-wash,5.86,789.9,193.3,512.7,146.9,1112.1,204.8,41.8,35.0,High Contamination,Student Mess Kitchen,2026-03-19
+GW-0219,Kitchen Sink Pre-wash,7.01,892.2,226.2,497.0,147.6,1366.6,169.1,39.2,36.3,High Contamination,Food Court Block 4,2026-03-17
+GW-0220,Cafeteria Dish Area,6.02,996.4,217.1,553.8,117.9,1570.8,189.3,45.0,35.0,High Contamination,Main Dining Hall,2026-03-03
+GW-0221,Food Processing Basin,6.09,1246.6,327.1,878.7,253.1,1840.2,252.6,84.6,43.0,Severe Contamination,Commercial Scullery Line,2026-03-24
+GW-0222,Heavy Laundry Wash Slurry,6.34,1208.5,270.1,647.1,272.7,1729.8,250.9,78.8,41.9,Severe Contamination,Central Kitchen Drainage,2026-03-08
+GW-0223,Heavy Laundry Wash Slurry,6.02,1356.3,300.5,703.4,183.5,2086.5,211.5,83.7,38.4,Severe Contamination,Commercial Scullery Line,2026-03-13
+GW-0224,Commercial Kitchen Grease Trap,6.01,1393.2,369.7,919.3,229.0,1975.5,353.5,73.8,36.1,Severe Contamination,Industrial Laundry Plant,2026-03-15
+GW-0225,Commercial Kitchen Grease Trap,6.19,1383.1,370.3,882.8,263.7,2083.3,294.6,71.1,43.4,Severe Contamination,Commercial Scullery Line,2026-03-12
+GW-0226,Institutional Scullery,7.12,1505.8,386.2,1070.9,245.2,2184.8,306.7,69.6,42.0,Severe Contamination,Central Kitchen Drainage,2026-03-22
+GW-0227,Food Processing Basin,5.64,1351.3,306.6,809.1,208.1,1910.6,258.7,86.9,37.9,Severe Contamination,Central Kitchen Drainage,2026-03-23
+GW-0228,Commercial Kitchen Grease Trap,7.28,1449.3,377.8,1074.4,319.3,2201.1,324.6,85.3,43.1,Severe Contamination,Central Kitchen Drainage,2026-03-10
+GW-0229,Food Processing Basin,5.2,1419.4,362.4,932.0,285.6,2025.8,253.5,85.9,33.6,Severe Contamination,Industrial Laundry Plant,2026-03-22
+GW-0230,Institutional Scullery,5.44,1390.0,390.2,1151.6,284.6,2029.9,214.0,81.8,35.5,Severe Contamination,Industrial Laundry Plant,2026-03-26
+GW-0231,Commercial Kitchen Grease Trap,5.97,1445.9,281.2,737.0,247.7,2094.1,287.4,85.3,41.9,Severe Contamination,Industrial Laundry Plant,2026-03-01
+GW-0232,Commercial Kitchen Grease Trap,5.62,1474.2,268.1,698.6,258.5,2126.0,298.5,87.5,35.7,Severe Contamination,Industrial Laundry Plant,2026-03-12
+GW-0233,Food Processing Basin,5.37,1590.7,302.4,897.2,303.3,2187.9,337.2,82.1,36.9,Severe Contamination,Industrial Laundry Plant,2026-03-15
+GW-0234,Heavy Laundry Wash Slurry,6.81,1568.0,350.4,995.2,191.9,2289.4,317.8,67.9,37.3,Severe Contamination,Bulk Catering Unit,2026-03-21
+GW-0235,Institutional Scullery,5.58,1455.0,402.4,997.0,242.6,2197.5,329.8,62.0,37.2,Severe Contamination,Industrial Laundry Plant,2026-03-09
+GW-0236,Heavy Laundry Wash Slurry,6.38,1351.0,310.8,800.2,292.9,1908.5,206.0,82.5,41.5,Severe Contamination,Industrial Laundry Plant,2026-03-20
+GW-0237,Commercial Kitchen Grease Trap,6.8,1180.8,308.0,906.4,216.1,1819.0,221.3,63.0,38.1,Severe Contamination,Commercial Scullery Line,2026-03-01
+GW-0238,Commercial Kitchen Grease Trap,6.19,1241.6,323.6,907.2,181.5,1797.6,207.9,83.8,35.3,Severe Contamination,Central Kitchen Drainage,2026-03-07
+GW-0239,Food Processing Basin,6.82,1294.4,276.2,684.6,248.5,1941.8,270.6,78.5,38.3,Severe Contamination,Bulk Catering Unit,2026-03-04
+GW-0240,Heavy Laundry Wash Slurry,5.91,1493.5,397.0,1145.4,225.2,2229.4,336.7,79.0,40.6,Severe Contamination,Bulk Catering Unit,2026-03-02
+GW-0241,Commercial Kitchen Grease Trap,5.51,1372.2,356.6,918.0,232.8,1991.0,399.0,63.6,41.0,Severe Contamination,Commercial Scullery Line,2026-03-05
+GW-0242,Commercial Kitchen Grease Trap,5.2,1206.3,370.6,1044.8,194.0,1683.9,212.3,70.5,35.6,Severe Contamination,Central Kitchen Drainage,2026-03-16
+GW-0243,Food Processing Basin,5.5,1319.8,278.0,787.8,221.4,1916.0,274.1,72.8,34.4,Severe Contamination,Commercial Scullery Line,2026-03-10
+GW-0244,Institutional Scullery,6.21,1288.9,365.6,851.7,244.2,1941.5,218.5,80.6,40.8,Severe Contamination,Central Kitchen Drainage,2026-03-05
+GW-0245,Heavy Laundry Wash Slurry,6.36,1533.6,285.7,693.1,232.8,2363.6,277.7,65.3,38.8,Severe Contamination,Central Kitchen Drainage,2026-03-25
+GW-0246,Commercial Kitchen Grease Trap,5.66,1306.4,297.6,709.2,258.2,1843.1,258.1,76.3,44.6,Severe Contamination,Central Kitchen Drainage,2026-03-03
+GW-0247,Heavy Laundry Wash Slurry,6.2,1294.4,307.9,713.6,297.8,1809.1,287.3,68.1,39.6,Severe Contamination,Bulk Catering Unit,2026-03-19
+GW-0248,Heavy Laundry Wash Slurry,6.23,1388.0,340.3,953.8,213.6,1934.1,312.1,76.4,36.2,Severe Contamination,Industrial Laundry Plant,2026-03-16
+GW-0249,Food Processing Basin,6.02,1416.8,387.4,976.9,299.7,1985.8,254.8,70.1,38.0,Severe Contamination,Bulk Catering Unit,2026-03-03
+GW-0250,Heavy Laundry Wash Slurry,5.95,1277.6,294.9,751.1,195.9,1835.9,344.8,72.5,35.0,Severe Contamination,Commercial Scullery Line,2026-03-24
+GW-0251,Food Processing Basin,5.46,1342.7,395.7,930.1,193.6,2039.1,297.4,82.4,37.9,Severe Contamination,Bulk Catering Unit,2026-03-15
+GW-0252,Food Processing Basin,5.67,1167.8,321.4,801.7,250.4,1756.4,305.5,63.8,37.8,Severe Contamination,Central Kitchen Drainage,2026-03-10
+GW-0253,Commercial Kitchen Grease Trap,5.97,1229.7,342.0,832.0,255.1,1776.0,294.3,63.9,32.9,Severe Contamination,Bulk Catering Unit,2026-03-10
+GW-0254,Heavy Laundry Wash Slurry,5.2,1359.5,382.7,1139.7,188.6,1958.0,286.2,64.4,38.6,Severe Contamination,Industrial Laundry Plant,2026-03-19
+GW-0255,Institutional Scullery,5.97,1239.9,401.9,1029.4,278.2,1795.1,377.7,77.2,36.0,Severe Contamination,Bulk Catering Unit,2026-03-04
+GW-0256,Food Processing Basin,6.56,1423.4,364.8,890.8,253.6,2054.3,337.1,72.6,42.1,Severe Contamination,Central Kitchen Drainage,2026-03-13
+GW-0257,Institutional Scullery,5.95,1495.6,374.1,1054.1,298.4,2268.4,288.9,81.3,45.0,Severe Contamination,Commercial Scullery Line,2026-03-03
+GW-0258,Institutional Scullery,6.11,1410.3,267.8,697.4,222.4,2000.1,290.7,77.9,37.7,Severe Contamination,Central Kitchen Drainage,2026-03-09
+GW-0259,Heavy Laundry Wash Slurry,5.28,1484.0,387.7,905.3,260.5,2055.3,286.7,62.4,37.2,Severe Contamination,Bulk Catering Unit,2026-03-16
+GW-0260,Heavy Laundry Wash Slurry,5.86,1265.5,370.7,1027.2,299.5,1955.0,312.5,86.3,39.7,Severe Contamination,Central Kitchen Drainage,2026-03-24
+GW-0261,Heavy Laundry Wash Slurry,6.11,1050.0,384.0,998.1,209.9,1490.8,263.2,84.5,41.8,Severe Contamination,Central Kitchen Drainage,2026-03-22
+GW-0262,Commercial Kitchen Grease Trap,6.62,1482.6,436.4,1079.6,210.0,2107.5,217.3,78.9,30.9,Severe Contamination,Central Kitchen Drainage,2026-03-15
+GW-0263,Institutional Scullery,5.9,1050.0,361.0,881.1,293.7,1450.0,253.9,62.7,29.5,Severe Contamination,Industrial Laundry Plant,2026-03-15
+GW-0264,Commercial Kitchen Grease Trap,5.58,1611.0,283.5,683.7,272.5,2461.6,325.6,83.2,39.2,Severe Contamination,Industrial Laundry Plant,2026-03-19
+GW-0265,Food Processing Basin,5.83,1504.8,267.0,752.9,254.1,2326.2,295.0,67.6,38.4,Severe Contamination,Bulk Catering Unit,2026-03-05
+GW-0266,Institutional Scullery,5.2,1611.8,299.5,755.6,209.3,2234.5,303.9,82.7,30.5,Severe Contamination,Bulk Catering Unit,2026-03-17
+GW-0267,Institutional Scullery,6.17,1477.1,432.5,1043.3,194.8,2108.3,315.0,68.0,34.8,Severe Contamination,Bulk Catering Unit,2026-03-13
+GW-0268,Commercial Kitchen Grease Trap,6.3,1445.7,405.8,1017.6,246.4,2099.1,245.5,81.0,31.8,Severe Contamination,Bulk Catering Unit,2026-03-14
+GW-0269,Heavy Laundry Wash Slurry,5.39,1333.9,344.8,939.7,178.9,2014.7,283.4,68.1,35.9,Severe Contamination,Bulk Catering Unit,2026-03-24
+GW-0270,Institutional Scullery,5.87,1415.6,364.1,1010.5,254.7,2090.8,255.9,70.5,40.3,Severe Contamination,Central Kitchen Drainage,2026-03-22

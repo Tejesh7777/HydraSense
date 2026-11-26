@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydraSense • Greywater Contamination Analysis & Treatment System (SIH26023)</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/water-effects.css') }}">
+
+    <!-- Vendor Scripts (Downloaded locally for 100% offline functionality) -->
+    <script src="{{ url_for('static', filename='vendor/three.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/OrbitControls.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+</head>
+<body>
+    <!-- Animated fluid water canvas background -->
+    <canvas id="water-background-canvas"></canvas>
+    <div class="ambient-glow"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-header">
+                <div class="brand-logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>HydraSense</h1>
+                    <span class="badge-code">SIH26023 • AI ANALYTICS</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-category">Main Console</div>
+                <a class="nav-link active" data-view="dashboard">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" data-view="data-mgmt">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span>Data & Upload</span>
+                </a>
+                <a class="nav-link" data-view="eda">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <span>Exploratory EDA</span>
+                </a>
+
+                <div class="nav-category">Algorithms & 3D</div>
+                <a class="nav-link" data-view="distance">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    <span>Distance Engine (Obj 2)</span>
+                </a>
+                <a class="nav-link" data-view="clustering3d">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <span>3D Clustering (Obj 2)</span>
+                </a>
+                <a class="nav-link" data-view="comparison">
+                    <svg viewBox="0 0 24 24"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><polyline points="18 8 22 12 18 16"/><line x1="6" y1="12" x2="22" y2="12"/></svg>
+                    <span>Algorithm Benchmark</span>
+                </a>
+
+                <div class="nav-category">Decision Support</div>
+                <a class="nav-link" data-view="treatment">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>Treatment Recommender</span>
+                </a>
+                <a class="nav-link" data-view="validation">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Lab Validation (Obj 3)</span>
+                </a>
+                <a class="nav-link" data-view="history">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Reports & History</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sys-status">
+                    <div class="status-dot"></div>
+                    <span>Sensors Online (24/7)</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <main class="main-wrapper">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-title">
+                        <span>HydraSense Analytics</span>
+                        <span class="view-badge" id="topbar-view-name">DASHBOARD</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="metric-pill">
+                        <span>Samples:</span>
+                        <strong id="topbar-sample-count">270</strong>
+                    </div>
+
+                    <div class="sensor-beacon">
+                        <div class="beacon-ring">
+                            <div class="beacon-core"></div>
+                            <div class="beacon-wave"></div>
+                        </div>
+                        <span style="color:var(--cyan-primary);">IoT Telemetry Sync</span>
+                    </div>
+
+                    <button class="btn-outline" id="btn-export-csv-global" title="Export full CSV">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        CSV Export
+                    </button>
+
+                    <button class="btn-cyber" id="btn-download-zip-topbar" onclick="window.location.href='/api/download_project_zip'" title="Download entire source code zip">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Project ZIP
+                    </button>
+
+                    <button class="btn-outline" id="btn-clear-db-topbar" title="Delete all samples to start fresh" style="color:var(--coral-danger); border-color:rgba(255,0,85,0.45); background:rgba(255,0,85,0.08);">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                        Clear All Data
+                    </button>
+
+                    <button class="btn-outline" id="btn-reset-db" title="Restore default 270 scientific reference samples" style="color:var(--cyan-primary); border-color:rgba(0,240,255,0.35);">
+                        Restore Seed Data
+                    </button>
+                </div>
+            </header>
+
+            <!-- Body Views -->
+            <div class="content-body">
+
+                <!-- 1. DASHBOARD VIEW -->
+                <section class="view-section active" id="view-dashboard">
+                    <!-- 9 Physicochemical Parameter Stat Cards (Objective 1) -->
+                    <div style="margin-bottom: 22px;">
+                        <div class="card-header" style="margin-bottom: 12px;">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                                <span>Physicochemical Parameter Telemetry (Real-Time Mean)</span>
+                            </div>
+                            <span class="card-subtitle">Active sample pool: <strong id="dash-total-samples" style="color:var(--cyan-primary);">270</strong></span>
+                        </div>
+                        <div class="grid-9-params" id="dashboard-param-grid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Water Quality Trends & WQI Radial Gauge -->
+                    <div class="grid-3" style="margin-bottom: 22px;">
+                        <!-- Trends Chart (2 cols) -->
+                        <div class="glass-card" style="grid-column: span 2;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    <span>Water Quality Trends</span>
+                                </div>
+                                <span class="card-subtitle">Continuous Sensor Trajectory</span>
+                            </div>
+                            <div style="height: 270px;">
+                                <canvas id="trends-line-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- WQI Radial Gauge (Inspired by HydraSense Interface) -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                                    <span>Water Quality Index</span>
+                                </div>
+                            </div>
+                            <div class="wqi-dial-container">
+                                <div class="wqi-gauge-wrapper">
+                                    <canvas id="wqi-gauge-chart" class="wqi-gauge-canvas"></canvas>
+                                    <div class="wqi-center-text">
+                                        <div class="wqi-number" id="wqi-display-value">92</div>
+                                        <div class="wqi-label" id="wqi-display-status">Excellent</div>
+                                    </div>
+                                </div>
+                                <div class="wqi-scale-legend">
+                                    <div class="scale-item">
+                                        <span><span class="scale-dot" style="background:#00f0ff;"></span>Excellent</span>
+                                        <span>(90-100)</span>
+                                    </div>
+                                    <div class="scale-item">
+                                        <span><span class="scale-dot" style="background:#00ff88;"></span>Good</span>
+                                        <span>(70-89)</span>
+                                    </div>
+                                    <div class="scale-item">
+                                        <span><span class="scale-dot" style="background:#ffb703;"></span>Fair</span>
+                                        <span>(40-69)</span>
+                                    </div>
+                                    <div class="scale-item">
+                                        <span><span class="scale-dot" style="background:#ff0055;"></span>Poor</span>
+                                        <span>(0-39)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Distribution & Recent Samples -->
+                    <div class="grid-3" style="margin-bottom: 22px;">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                                    <span>Contamination Distribution</span>
+                                </div>
+                            </div>
+                            <div style="height: 240px;">
+                                <canvas id="category-doughnut-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="grid-column: span 2;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                                    <span>Recent Greywater Samples</span>
+                                </div>
+                                <button class="btn-outline" style="font-size:0.75rem; padding:4px 10px;" onclick="loadView('data-mgmt')">View All</button>
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sample ID</th>
+                                            <th>Source</th>
+                                            <th>pH</th>
+                                            <th>TDS</th>
+                                            <th>BOD</th>
+                                            <th>COD</th>
+                                            <th>Category</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dashboard-recent-tbody">
+                                        <!-- Dynamic rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Target Applications (Inspired by HydraSense UI) -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                                <span>Recycled Water Application Domains</span>
+                            </div>
+                        </div>
+                        <div class="grid-4" style="gap: 14px;">
+                            <div class="param-card" style="border-left: 3px solid var(--cyan-primary);">
+                                <strong style="color:var(--cyan-primary);">🌱 Hydroponics & Irrigation</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Safe subsurface & drip watering for greenbelts.</span>
+                            </div>
+                            <div class="param-card" style="border-left: 3px solid var(--aqua-accent);">
+                                <strong style="color:var(--aqua-accent);">🏢 Building Toilet Flushing</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Dual plumbing for urban decentralization.</span>
+                            </div>
+                            <div class="param-card" style="border-left: 3px solid var(--blue-accent);">
+                                <strong style="color:var(--blue-accent);">🏭 Industrial Utilities & Cooling</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Makeup water for towers and boiler loops.</span>
+                            </div>
+                            <div class="param-card" style="border-left: 3px solid var(--purple-accent);">
+                                <strong style="color:var(--purple-accent);">🌊 Safe Surface Discharge</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Strict adherence to CPCB & EPA standards.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. DATA MANAGEMENT & UPLOAD VIEW -->
+                <section class="view-section" id="view-data-mgmt">
+                    <!-- Dataset Control Action Banner -->
+                    <div class="glass-card" style="margin-bottom: 20px; padding: 16px 22px;">
+                        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px;">
+                            <div>
+                                <h3 style="font-size:1.05rem; color:#ffffff; display:flex; align-items:center; gap:8px;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--cyan-primary)" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    Dataset Management & Source Control
+                                </h3>
+                                <span style="font-size:0.78rem; color:var(--text-muted);">
+                                    Upload your custom dataset, wipe the existing data to observe clear analytical changes, or auto-classify unlabelled streams.
+                                </span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                                <button class="btn-cyber" id="btn-clear-db-mgmt" style="background:rgba(255,0,85,0.2); border-color:var(--coral-danger); box-shadow:0 0 12px rgba(255,0,85,0.3);">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    Clear All Data (Clean Slate)
+                                </button>
+                                <button class="btn-outline" id="btn-auto-classify" style="color:var(--aqua-accent); border-color:rgba(0,255,200,0.4);">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    Auto-Classify Unlabeled Samples
+                                </button>
+                                <button class="btn-outline" id="btn-reset-db-mgmt" style="color:var(--cyan-primary); border-color:rgba(0,240,255,0.35);">
+                                    Restore Seed (270 Samples)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <!-- CSV Upload Card -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    <span>Batch CSV Data Ingestion</span>
+                                </div>
+                            </div>
+                            <div class="dropzone" id="csv-dropzone">
+                                <div class="dropzone-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                </div>
+                                <strong style="color:#ffffff;">Click or Drag & Drop Greywater CSV File</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">
+                                    Required parameters: pH, TDS, BOD, COD, Turbidity, EC, TSS, Oil_and_Grease, Temperature
+                                </span>
+                                <input type="file" id="csv-file-input" accept=".csv" style="display:none;">
+                            </div>
+
+                            <!-- Replace vs Append Mode Selector -->
+                            <div style="margin-top:14px; background:rgba(6,14,30,0.7); border:1px solid rgba(0,240,255,0.18); border-radius:8px; padding:12px 14px;">
+                                <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-size:0.84rem; color:var(--cyan-primary);">
+                                    <input type="checkbox" id="csv-replace-toggle" checked style="width:17px; height:17px; accent-color:var(--cyan-primary); cursor:pointer;">
+                                    <strong>Replace existing dataset (Delete all current samples before importing)</strong>
+                                </label>
+                                <p style="font-size:0.73rem; color:var(--text-muted); margin:4px 0 0 27px;">
+                                    Uncheck if you want to merge / append this file with existing records instead of replacing.
+                                </p>
+                            </div>
+
+                            <div id="upload-status-msg" style="margin-top:12px; font-size:0.8rem; text-align:center;"></div>
+                        </div>
+
+                        <!-- Manual Sample Entry Form -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    <span>Manual Sample Profiler</span>
+                                </div>
+                                <span class="card-subtitle">Real-Time Physicochemical Analysis</span>
+                            </div>
+                            <form id="manual-sample-form">
+                                <div class="grid-3" style="gap:10px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Source</label>
+                                        <input type="text" name="source" class="form-control" placeholder="e.g. Bathroom Shower" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" name="Location" class="form-control" placeholder="Block A Hostel">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">pH (6.5-8.5)</label>
+                                        <input type="number" step="0.01" name="pH" class="form-control" value="7.35" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">TDS (mg/L)</label>
+                                        <input type="number" step="0.1" name="TDS" class="form-control" value="380.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">BOD (mg/L)</label>
+                                        <input type="number" step="0.1" name="BOD" class="form-control" value="55.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">COD (mg/L)</label>
+                                        <input type="number" step="0.1" name="COD" class="form-control" value="130.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Turbidity (NTU)</label>
+                                        <input type="number" step="0.1" name="Turbidity" class="form-control" value="22.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">EC (µS/cm)</label>
+                                        <input type="number" step="0.1" name="EC" class="form-control" value="560.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">TSS (mg/L)</label>
+                                        <input type="number" step="0.1" name="TSS" class="form-control" value="48.0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Oil & Grease</label>
+                                        <input type="number" step="0.1" name="Oil_and_Grease" class="form-control" value="9.5" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Temperature (°C)</label>
+                                        <input type="number" step="0.1" name="Temperature" class="form-control" value="29.0" required>
+                                    </div>
+                                    <div class="form-group" style="align-self: flex-end;">
+                                        <button type="submit" class="btn-cyber" style="width:100%; height:40px;">
+                                            Analyze & Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Data Table -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                                <span>Master Greywater Sample Database</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <input type="text" id="sample-search-input" class="form-control" placeholder="Search ID, source, location..." style="width:240px; padding:6px 12px;">
+                                <select id="sample-cat-filter" class="form-control" style="width:180px; padding:6px 12px;">
+                                    <option value="All">All Categories</option>
+                                    <option value="Low Contamination">Low Contamination</option>
+                                    <option value="Medium Contamination">Medium Contamination</option>
+                                    <option value="High Contamination">High Contamination</option>
+                                    <option value="Severe Contamination">Severe Contamination</option>
+                                </select>
+                                <span id="table-count-label" style="font-size:0.78rem; color:var(--text-muted);"></span>
+                            </div>
+                        </div>
+                        <div class="table-wrapper" style="max-height: 480px;">
+                            <table class="cyber-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sample ID</th>
+                                        <th>Source</th>
+                                        <th>pH</th>
+                                        <th>TDS</th>
+                                        <th>BOD</th>
+                                        <th>COD</th>
+                                        <th>Turbidity</th>
+                                        <th>EC</th>
+                                        <th>TSS</th>
+                                        <th>Oil/Grease</th>
+                                        <th>Temp</th>
+                                        <th>Category</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="samples-data-tbody">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. EXPLORATORY DATA ANALYSIS (EDA) VIEW -->
+                <section class="view-section" id="view-eda">
+                    <!-- Summary Statistics Table -->
+                    <div class="glass-card" style="margin-bottom: 22px;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                <span>Descriptive Statistics & Outlier Metrics</span>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="cyber-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Unit</th>
+                                        <th>Mean</th>
+                                        <th>Std</th>
+                                        <th>Min</th>
+                                        <th>Q25</th>
+                                        <th>Median</th>
+                                        <th>Q75</th>
+                                        <th>Max</th>
+                                        <th>IQR</th>
+                                        <th>Outliers (1.5x IQR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="eda-summary-tbody">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Correlation Heatmap & Distribution Chart -->
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+                                    <span>Correlation Matrix Heatmap</span>
+                                </div>
+                                <select id="eda-corr-toggle" class="form-control" style="width:140px; padding:4px 8px; font-size:0.75rem;">
+                                    <option value="pearson">Pearson</option>
+                                    <option value="spearman">Spearman Rank</option>
+                                </select>
+                            </div>
+                            <div id="eda-correlation-container" style="min-height: 280px;">
+                                <!-- Dynamic heatmap -->
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                                    <span>Parameter Frequency Distribution</span>
+                                </div>
+                                <select id="eda-dist-param-picker" class="form-control" style="width:160px; padding:4px 8px; font-size:0.75rem;">
+                                    <option value="BOD">BOD (mg/L)</option>
+                                    <option value="COD">COD (mg/L)</option>
+                                    <option value="TDS">TDS (mg/L)</option>
+                                    <option value="Turbidity">Turbidity (NTU)</option>
+                                    <option value="pH">pH</option>
+                                    <option value="EC">EC (µS/cm)</option>
+                                    <option value="TSS">TSS (mg/L)</option>
+                                    <option value="Oil_and_Grease">Oil & Grease (mg/L)</option>
+                                    <option value="Temperature">Temperature (°C)</option>
+                                </select>
+                            </div>
+                            <div style="height: 280px;">
+                                <canvas id="eda-dist-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PCA Explained Variance & Loadings -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                                <span>Principal Component Analysis (3D PCA Decomposition)</span>
+                            </div>
+                            <span class="card-subtitle">Cumulative Explained Variance: <strong id="pca-cumulative-var" style="color:var(--cyan-primary);">--</strong></span>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="cyber-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Full Name</th>
+                                        <th>PC1 (Primary Contamination)</th>
+                                        <th>PC2 (Salinity / EC / Detergents)</th>
+                                        <th>PC3 (Temperature / Acidity)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pca-loadings-tbody">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. DISTANCE ENGINE VIEW (Objective 2) -->
+                <section class="view-section" id="view-distance">
+                    <!-- Math Formulation Cards -->
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                                    <span>Euclidean Distance (L2 Geometric Metric)</span>
+                                </div>
+                            </div>
+                            <div style="font-family:var(--font-mono); font-size:1rem; color:var(--cyan-primary); padding:10px; background:rgba(0,240,255,0.08); border-radius:6px; margin-bottom:10px;">
+                                d_E(u, v) = √( Σ (u_i - v_i)² ) = ‖u - v‖₂
+                            </div>
+                            <p style="font-size:0.82rem; color:var(--text-secondary);">
+                                Represents straight-line geometric distance in standardized multidimensional space. Highly sensitive to extreme coordinate outliers because differences are squared. Ideal for spherical cluster topologies.
+                            </p>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                    <span>Manhattan Distance (L1 Cityblock Metric)</span>
+                                </div>
+                            </div>
+                            <div style="font-family:var(--font-mono); font-size:1rem; color:var(--aqua-accent); padding:10px; background:rgba(0,255,200,0.08); border-radius:6px; margin-bottom:10px;">
+                                d_M(u, v) = Σ |u_i - v_i| = ‖u - v‖₁
+                            </div>
+                            <p style="font-size:0.82rem; color:var(--text-secondary);">
+                                Measures grid-based taxicab distance along each independent physicochemical axis. Robust against disproportionate spikes in single variables (e.g., grease or turbidity shock loads) without skewing the overall norm.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Metric Stats & Matrix Viewer -->
+                    <div class="grid-3" style="margin-bottom: 22px;">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    <span>Metric Distribution Stats</span>
+                                </div>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:12px; font-size:0.82rem;">
+                                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.1); padding-bottom:6px;">
+                                    <span>Pearson Correlation:</span>
+                                    <strong id="dist-p-corr" style="color:var(--cyan-primary);">--</strong>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.1); padding-bottom:6px;">
+                                    <span>Spearman Rank Corr:</span>
+                                    <strong id="dist-s-corr" style="color:var(--aqua-accent);">--</strong>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.1); padding-bottom:6px;">
+                                    <span>Euclidean Mean (Max):</span>
+                                    <span><span id="dist-euc-mean">--</span> (<span id="dist-euc-max">--</span>)</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between;">
+                                    <span>Manhattan Mean (Max):</span>
+                                    <span><span id="dist-man-mean">--</span> (<span id="dist-man-max">--</span>)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="grid-column: span 2;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                    <span>Pairwise Distance Matrix Preview</span>
+                                </div>
+                                <select id="dist-matrix-metric-toggle" class="form-control" style="width:160px; padding:4px 8px; font-size:0.75rem;">
+                                    <option value="euclidean">Euclidean (L2)</option>
+                                    <option value="manhattan">Manhattan (L1)</option>
+                                </select>
+                            </div>
+                            <div id="distance-matrix-container" style="max-height: 250px; overflow-y:auto;">
+                                <!-- Dynamic matrix table -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nearest Neighbors & Dimension Breakdown -->
+                    <div class="grid-2">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                                    <span>Nearest Neighbor Similarity Search</span>
+                                </div>
+                                <select id="dist-sample-select" class="form-control" style="width:200px; padding:4px 8px; font-size:0.75rem;">
+                                    <!-- Dynamic options -->
+                                </select>
+                            </div>
+
+                            <strong style="font-size:0.8rem; color:var(--cyan-primary);">Top 5 Euclidean Nearest Samples</strong>
+                            <div class="table-wrapper" style="margin: 8px 0 16px;">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr><th>Rank</th><th>Sample</th><th>Source</th><th>Distance (L2)</th><th>Similarity</th><th>Category</th></tr>
+                                    </thead>
+                                    <tbody id="nn-euclidean-tbody"></tbody>
+                                </table>
+                            </div>
+
+                            <strong style="font-size:0.8rem; color:var(--aqua-accent);">Top 5 Manhattan Nearest Samples</strong>
+                            <div class="table-wrapper" style="margin-top: 8px;">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr><th>Rank</th><th>Sample</th><th>Source</th><th>Distance (L1)</th><th>Similarity</th><th>Category</th></tr>
+                                    </thead>
+                                    <tbody id="nn-manhattan-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Dimension Contribution Breakdown -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    <span>Dimension Distance Contribution</span>
+                                </div>
+                                <span class="card-subtitle">Compared to: <strong id="dim-target-id" style="color:var(--cyan-primary);">--</strong></span>
+                            </div>
+                            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:10px;">
+                                Shows how each parameter dimension contributes to total Euclidean squared distance vs Manhattan absolute distance.
+                            </p>
+                            <div class="table-wrapper">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th>Query Val</th>
+                                            <th>Target Val</th>
+                                            <th>Delta</th>
+                                            <th>Manhattan %</th>
+                                            <th>Euclidean %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dimension-breakdown-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. 3D CLUSTERING VISUALIZER VIEW (Objective 2) -->
+                <section class="view-section" id="view-clustering3d">
+                    <!-- Control Bar -->
+                    <div class="glass-card" style="margin-bottom: 18px; padding: 14px 22px;">
+                        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px;">
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <label style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Algorithm:</label>
+                                <select id="cluster-algo-select" class="form-control" style="width:210px; padding:6px 12px;">
+                                    <option value="kmeans">K-Means (Euclidean)</option>
+                                    <option value="hierarchical_euclidean">Hierarchical (Euclidean)</option>
+                                    <option value="hierarchical_manhattan">Hierarchical (Manhattan)</option>
+                                </select>
+
+                                <label style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Linkage:</label>
+                                <select id="cluster-linkage-select" class="form-control" style="width:130px; padding:6px 12px;">
+                                    <option value="average">Average</option>
+                                    <option value="complete">Complete</option>
+                                    <option value="ward">Ward (Euc)</option>
+                                </select>
+
+                                <label style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Clusters (k):</label>
+                                <select id="cluster-k-select" class="form-control" style="width:75px; padding:6px 12px;">
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+
+                                <button class="btn-cyber" id="btn-run-clustering" style="padding:6px 16px;">
+                                    Execute Cluster
+                                </button>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <button class="btn-outline" id="btn-3d-autorotate" style="font-size:0.78rem; padding:6px 12px;">
+                                    Auto Rotate
+                                </button>
+                                <button class="btn-outline" id="btn-3d-reset-cam" style="font-size:0.78rem; padding:6px 12px;">
+                                    Reset Camera
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Three.js Visualizer Canvas Box -->
+                    <div class="visualizer-3d-box" id="threejs-canvas-wrapper">
+                        <!-- HUD Overlays -->
+                        <div class="hud-overlay">
+                            <div class="hud-pill">
+                                <span class="status-dot"></span>
+                                <span>3D Space: PCA Projected Coordinates (PC1, PC2, PC3)</span>
+                            </div>
+                            <div class="hud-pill">
+                                <span>Interaction: Drag left-click to orbit • Scroll to zoom • Right-click to pan</span>
+                            </div>
+                        </div>
+
+                        <!-- Hover/Click Inspection Tooltip -->
+                        <div class="node-tooltip" id="cluster-3d-tooltip" style="display:none;"></div>
+                    </div>
+
+                    <!-- Quality Metrics Summary Banner -->
+                    <div class="grid-4" style="margin-top: 18px; gap: 14px;">
+                        <div class="param-card">
+                            <span class="param-label">Algorithm</span>
+                            <span style="font-size:1.1rem; font-weight:700; color:#ffffff;" id="c-metric-algo">K-Means</span>
+                        </div>
+                        <div class="param-card">
+                            <span class="param-label">Silhouette (Euclidean)</span>
+                            <span style="font-size:1.3rem; font-weight:700; color:var(--cyan-primary);" id="c-metric-sil-euc">--</span>
+                        </div>
+                        <div class="param-card">
+                            <span class="param-label">Silhouette (Manhattan)</span>
+                            <span style="font-size:1.3rem; font-weight:700; color:var(--aqua-accent);" id="c-metric-sil-man">--</span>
+                        </div>
+                        <div class="param-card">
+                            <span class="param-label">Davies-Bouldin / Time</span>
+                            <span style="font-size:1.1rem; font-weight:700; color:#ffffff;">
+                                <span id="c-metric-db">--</span> (<span id="c-metric-time">--</span>)
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. ALGORITHM COMPARISON VIEW (Objective 2) -->
+                <section class="view-section" id="view-comparison">
+                    <div class="glass-card" style="margin-bottom: 22px;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                                <span>Euclidean vs Manhattan Distance Clustering Benchmark</span>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="cyber-table">
+                                <thead>
+                                    <tr>
+                                        <th>Algorithm</th>
+                                        <th>Metric</th>
+                                        <th>Silhouette (Euc)</th>
+                                        <th>Silhouette (Man)</th>
+                                        <th>Davies-Bouldin</th>
+                                        <th>Lab Accuracy</th>
+                                        <th>Macro F1</th>
+                                        <th>Runtime (ms)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="comparison-benchmarks-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    <span>Cluster Quality Index Comparison</span>
+                                </div>
+                            </div>
+                            <div style="height: 270px;">
+                                <canvas id="comp-chart-quality"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    <span>Laboratory Validation Accuracy & F1-Score</span>
+                                </div>
+                            </div>
+                            <div style="height: 270px;">
+                                <canvas id="comp-chart-accuracy"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In-depth technical rationale card -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span>Algorithmic Comparison Findings (SIH26023 Objective 2)</span>
+                            </div>
+                        </div>
+                        <div class="grid-2" style="gap:20px; font-size:0.84rem; color:var(--text-secondary);">
+                            <div>
+                                <strong style="color:var(--cyan-primary);">1. Euclidean Distance (L2 Norm) Characteristics:</strong>
+                                <p style="margin-top:6px;">
+                                    Euclidean distance excels at recognizing dense, hyperspherical clusters in normalized parameter space. However, because deviations are squared, a sudden transient spike in kitchen COD (e.g. from 200 to 800 mg/L) causes an exponential increase in distance, sometimes causing samples with identical pH, TDS, and turbidity to be grouped separately.
+                                </p>
+                            </div>
+                            <div>
+                                <strong style="color:var(--aqua-accent);">2. Manhattan Distance (L1 Norm) Characteristics:</strong>
+                                <p style="margin-top:6px;">
+                                    Manhattan distance treats each physicochemical parameter linearly along its respective coordinate axis. This prevents single-parameter surges (like detergent surfactants or food solids) from overwhelming the distance metric, leading to higher cluster separation stability and superior alignment in mixed domestic greywater streams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. TREATMENT RECOMMENDATION VIEW -->
+                <section class="view-section" id="view-treatment">
+                    <!-- Sample Overview Banner -->
+                    <div class="glass-card" style="margin-bottom: 22px;">
+                        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;">
+                            <div>
+                                <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Selected Sample Profile</span>
+                                <h2 style="font-size:1.4rem; color:#ffffff; display:flex; align-items:center; gap:10px;">
+                                    <span id="rec-sample-id">GW-0001</span>
+                                    <span style="font-size:0.85rem; color:var(--cyan-primary); font-weight:normal;" id="rec-source-name">Bathroom Shower</span>
+                                </h2>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:20px;">
+                                <div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">Water Quality Index (WQI)</span>
+                                    <div style="font-size:1.2rem; font-weight:700; color:var(--emerald-safe);" id="rec-wqi-score">--</div>
+                                </div>
+                                <div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">Assigned Contamination Category</span>
+                                    <div style="font-size:1.2rem; font-weight:700; color:var(--cyan-primary);" id="rec-category-label">--</div>
+                                </div>
+                                <select id="treatment-sample-picker" class="form-control" style="width:200px; padding:6px 12px;">
+                                    <!-- Dynamic sample options -->
+                                </select>
+                                <button class="btn-cyber" id="btn-download-pdf-rec">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    PDF Lab Certificate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contamination Radar & Treatment Train -->
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <!-- Radar Chart -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                                    <span>Contamination Profiling vs Standard Limits</span>
+                                </div>
+                            </div>
+                            <div style="height: 340px;">
+                                <canvas id="rec-radar-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- 5-Stage Treatment Train -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                    <span>Recommended Multi-Stage Treatment Train</span>
+                                </div>
+                            </div>
+                            <div class="treatment-timeline" id="treatment-timeline-container">
+                                <!-- Dynamic treatment stages -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chemical Dosing & Reuse Suitability Matrix -->
+                    <div class="grid-2">
+                        <!-- Chemical Dosing Schedule -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><path d="M10 2v7.31L4.69 16.5A2 2 0 0 0 6.32 19.5h11.36a2 2 0 0 0 1.63-3L14 9.31V2"/></svg>
+                                    <span>Calculated Chemical Dosing Schedule</span>
+                                </div>
+                            </div>
+                            <div class="grid-2" style="gap:12px;">
+                                <div class="param-card">
+                                    <span class="param-label">PAC Coagulant Dose</span>
+                                    <span class="param-value" id="dose-pac">--</span>
+                                </div>
+                                <div class="param-card">
+                                    <span class="param-label">Alum (Alternative)</span>
+                                    <span class="param-value" id="dose-alum">--</span>
+                                </div>
+                                <div class="param-card">
+                                    <span class="param-label">Polymer Aid (Anionic)</span>
+                                    <span class="param-value" id="dose-poly">--</span>
+                                </div>
+                                <div class="param-card">
+                                    <span class="param-label">Primary UV Disinfection</span>
+                                    <span class="param-value" id="dose-uv" style="font-size:1.1rem;">40 mJ/cm²</span>
+                                </div>
+                            </div>
+                            <div style="margin-top:12px; font-size:0.8rem; color:var(--text-secondary); background:rgba(0,240,255,0.06); padding:8px 12px; border-radius:6px;">
+                                <span>Chlorine Residual Target:</span> <strong id="dose-chlorine" style="color:var(--cyan-primary);">2.5 mg/L</strong> (Ensures pathogen suppression in recycled storage)
+                            </div>
+                        </div>
+
+                        <!-- Safe Reuse Suitability Matrix -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    <span>Water Reuse Suitability Standards Assessment</span>
+                                </div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Application</th>
+                                            <th>Status</th>
+                                            <th>Compliance Details</th>
+                                            <th>Standard Threshold</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reuse-matrix-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. LABORATORY VALIDATION VIEW (Objective 3) -->
+                <section class="view-section" id="view-validation">
+                    <div class="glass-card" style="margin-bottom: 22px;">
+                        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px;">
+                            <div>
+                                <h2 style="font-size:1.3rem; color:#ffffff;">Objective 3: Validation Against Laboratory-Confirmed Categories</h2>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">
+                                    Evaluated against ground truth using optimal Hungarian (Munkres) bipartite matching. Real dataset calculations.
+                                </span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <label style="font-size:0.82rem; color:var(--text-secondary);">Algorithm:</label>
+                                <select id="val-algo-select" class="form-control" style="width:200px; padding:6px 12px;">
+                                    <option value="kmeans">K-Means (Euclidean)</option>
+                                    <option value="hierarchical_euclidean">Hierarchical (Euclidean)</option>
+                                    <option value="hierarchical_manhattan">Hierarchical (Manhattan)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI Badges -->
+                    <div class="grid-4" style="margin-bottom: 22px; gap: 16px;">
+                        <div class="glass-card" style="text-align:center;">
+                            <span class="card-subtitle">Overall Accuracy</span>
+                            <div style="font-size:2.2rem; font-weight:800; color:var(--cyan-primary); font-family:var(--font-mono); margin-top:4px;" id="val-kpi-acc">--</div>
+                        </div>
+                        <div class="glass-card" style="text-align:center;">
+                            <span class="card-subtitle">Macro Precision</span>
+                            <div style="font-size:2.2rem; font-weight:800; color:var(--aqua-accent); font-family:var(--font-mono); margin-top:4px;" id="val-kpi-prec">--</div>
+                        </div>
+                        <div class="glass-card" style="text-align:center;">
+                            <span class="card-subtitle">Macro Recall</span>
+                            <div style="font-size:2.2rem; font-weight:800; color:var(--blue-accent); font-family:var(--font-mono); margin-top:4px;" id="val-kpi-rec">--</div>
+                        </div>
+                        <div class="glass-card" style="text-align:center;">
+                            <span class="card-subtitle">Macro F1-Score</span>
+                            <div style="font-size:2.2rem; font-weight:800; color:var(--emerald-safe); font-family:var(--font-mono); margin-top:4px;" id="val-kpi-f1">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Confusion Matrix Heatmap & Mapping -->
+                    <div class="grid-2" style="margin-bottom: 22px;">
+                        <!-- Confusion Matrix -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                    <span>Laboratory Confusion Matrix Heatmap</span>
+                                </div>
+                                <span class="card-subtitle">Total samples: <strong id="val-kpi-total">270</strong></span>
+                            </div>
+                            <div id="val-cm-container">
+                                <!-- Dynamic Confusion Matrix Grid -->
+                            </div>
+                        </div>
+
+                        <!-- Class Breakdown Table -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                                    <span>Per-Class Validation Performance</span>
+                                </div>
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="cyber-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>TP</th>
+                                            <th>FP</th>
+                                            <th>FN</th>
+                                            <th>Precision</th>
+                                            <th>Recall</th>
+                                            <th>F1-Score</th>
+                                            <th>Support</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="val-classes-tbody"></tbody>
+                                </table>
+                            </div>
+                            <div style="margin-top:14px; padding:10px; background:rgba(0,240,255,0.06); border-radius:6px; font-size:0.78rem;">
+                                <span>Optimal Hungarian Matching:</span>
+                                <div id="val-mapping-text" style="color:var(--cyan-primary); margin-top:4px;">--</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. HISTORY & REPORTS VIEW -->
+                <section class="view-section" id="view-history">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>Analysis History & Lab Certificate Downloads</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <button class="btn-outline" onclick="window.location.href='/api/export/csv'">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Export All Samples CSV
+                                </button>
+                                <button class="btn-cyber" onclick="window.location.href='/api/download_project_zip'">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Download Complete Project (.ZIP)
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="cyber-table">
+                                <thead>
+                                    <tr>
+                                        <th>Analysis ID</th>
+                                        <th>Sample ID</th>
+                                        <th>Timestamp</th>
+                                        <th>WQI</th>
+                                        <th>Classification</th>
+                                        <th>Source</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="history-data-tbody">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Instant Sample Analysis Modal -->
+    <div class="modal-backdrop" id="sample-result-modal">
+        <div class="modal-dialog">
+            <button class="modal-close-btn" onclick="closeSampleModal()">✕</button>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                <div class="brand-logo-icon" style="width:32px; height:32px;">
+                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                </div>
+                <h3 style="color:#ffffff;">Sample Analysis Completed</h3>
+            </div>
+
+            <div class="grid-2" style="gap:12px; margin-bottom:18px;">
+                <div class="param-card">
+                    <span class="param-label">Sample ID</span>
+                    <strong id="modal-sample-id" style="color:var(--cyan-primary); font-size:1.2rem;">--</strong>
+                </div>
+                <div class="param-card">
+                    <span class="param-label">Water Quality Index</span>
+                    <strong id="modal-wqi" style="color:var(--emerald-safe); font-size:1.2rem;">--</strong>
+                </div>
+                <div class="param-card">
+                    <span class="param-label">Suitability Classification</span>
+                    <strong id="modal-category" style="color:#ffffff;">--</strong>
+                </div>
+                <div class="param-card">
+                    <span class="param-label">Suggested PAC Coagulant</span>
+                    <strong id="modal-pac-dose" style="color:var(--aqua-accent);">--</strong>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:12px;">
+                <button class="btn-outline" onclick="closeSampleModal()">Close</button>
+                <button class="btn-cyber" onclick="closeSampleModal(); inspectSample(document.getElementById('modal-sample-id').textContent);">
+                    View Full Treatment Train & PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Controller Scripts -->
+    <script src="{{ url_for('static', filename='js/water-canvas.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cluster3d.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
